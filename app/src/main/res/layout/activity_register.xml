@@ -1,0 +1,76 @@
+<layout>
+    <data>
+        <import type="android.view.View" />
+        <variable
+            name="viewModel"
+            type="com.apolis.twowaydatabindingpractice.ui.register.RegisterViewModel" />
+    </data>
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:orientation="vertical"
+        android:padding="18dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".ui.register.RegisterActivity">
+
+
+        <EditText
+            android:text="@={viewModel.name}"
+            error_text="@{viewModel.nameError}"
+            android:layout_marginTop="15dp"
+            android:hint="enter your name"
+            android:id="@+id/et_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+        <EditText
+            android:text="@={viewModel.emailId}"
+            error_text="@{viewModel.emailIdError}"
+            android:hint="enter your email"
+            android:id="@+id/et_email"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+        <EditText
+            android:text="@={viewModel.mobile}"
+            error_text="@{viewModel.mobileError}"
+            android:hint="enter your mobile"
+            android:inputType="number"
+            android:id="@+id/et_mobile"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+        <EditText
+            android:text="@={viewModel.password}"
+            error_text="@{viewModel.passwordError}"
+            android:inputType="textPassword"
+            android:hint="enter your password"
+            android:id="@+id/et_password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+        <EditText
+            android:text="@={viewModel.repeatedPassword}"
+            error_text="@{viewModel.PasswordError}"
+            android:inputType="textPassword"
+            android:hint="enter your password again"
+            android:id="@+id/et_repeat_password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+
+        <Button
+            android:onClick='@{() -> viewModel.register()}'
+            android:layout_marginTop="15dp"
+            android:layout_gravity="center_horizontal"
+            android:text="sign up"
+            android:id="@+id/btn_signup"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <ProgressBar
+            android:visibility='@{viewModel.processing? View.VISIBLE : View.GONE}'
+            android:layout_marginTop="15dp"
+            android:layout_gravity="center_horizontal"
+            android:id="@+id/pb_processing"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+</layout>
